@@ -1,0 +1,824 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/themasch/node-bencode#readme"
+
+    >bencode (v0.11.0)</a>
+</h1>
+<h4>Bencode de/encoder</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.bencode">module bencode</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.byteLength">
+            function <span class="apidocSignatureSpan">bencode.</span>byteLength
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.decode">
+            function <span class="apidocSignatureSpan">bencode.</span>decode
+            <span class="apidocSignatureSpan">(data, start, end, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.encode">
+            function <span class="apidocSignatureSpan">bencode.</span>encode
+            <span class="apidocSignatureSpan">(data, buffer, offset)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.encodingLength">
+            function <span class="apidocSignatureSpan">bencode.</span>encodingLength
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.bencode.decode">module bencode.decode</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.decode.decode">
+            function <span class="apidocSignatureSpan">bencode.</span>decode
+            <span class="apidocSignatureSpan">(data, start, end, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.decode.buffer">
+            function <span class="apidocSignatureSpan">bencode.decode.</span>buffer
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.decode.dictionary">
+            function <span class="apidocSignatureSpan">bencode.decode.</span>dictionary
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.decode.find">
+            function <span class="apidocSignatureSpan">bencode.decode.</span>find
+            <span class="apidocSignatureSpan">(chr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.decode.integer">
+            function <span class="apidocSignatureSpan">bencode.decode.</span>integer
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.decode.list">
+            function <span class="apidocSignatureSpan">bencode.decode.</span>list
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.decode.next">
+            function <span class="apidocSignatureSpan">bencode.decode.</span>next
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">bencode.decode.</span>bytes</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">bencode.decode.</span>position</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">bencode.decode.</span>data</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">bencode.decode.</span>encoding</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.bencode.encode">module bencode.encode</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">bencode.encode.</span>_floatConversionDetected</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.encode.encode">
+            function <span class="apidocSignatureSpan">bencode.</span>encode
+            <span class="apidocSignatureSpan">(data, buffer, offset)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.encode._encode">
+            function <span class="apidocSignatureSpan">bencode.encode.</span>_encode
+            <span class="apidocSignatureSpan">(buffers, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.encode.buffer">
+            function <span class="apidocSignatureSpan">bencode.encode.</span>buffer
+            <span class="apidocSignatureSpan">(buffers, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.encode.dict">
+            function <span class="apidocSignatureSpan">bencode.encode.</span>dict
+            <span class="apidocSignatureSpan">(buffers, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.encode.list">
+            function <span class="apidocSignatureSpan">bencode.encode.</span>list
+            <span class="apidocSignatureSpan">(buffers, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bencode.encode.number">
+            function <span class="apidocSignatureSpan">bencode.encode.</span>number
+            <span class="apidocSignatureSpan">(buffers, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">bencode.encode.</span>bytes</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.bencode" id="apidoc.module.bencode">module bencode</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.byteLength" id="apidoc.element.bencode.byteLength">
+        function <span class="apidocSignatureSpan">bencode.</span>byteLength
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">byteLength = function (value) {
+  return bencode.encode(value).length
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+&#x3e; `String` __encoding__
+
+If `encoding` is set, bytestrings are
+automatically converted to strings.
+
+Returns `Object` | `Array` | `Buffer` | `String` | `Number`
+
+### bencode.<span class="apidocCodeKeywordSpan">byteLength</span>( *value* ) or bencode.encodingLength( *value* )
+
+&#x3e; `Buffer` | `Array` | `String` | `Object` | `Number` | `Boolean` __value__
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.decode" id="apidoc.element.bencode.decode">
+        function <span class="apidocSignatureSpan">bencode.</span>decode
+        <span class="apidocSignatureSpan">(data, start, end, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decode(data, start, end, encoding) {
+  if (data == null || data.length === 0) {
+    return null
+  }
+
+  if (typeof start !== &#x27;number&#x27; &#x26;&#x26; encoding == null) {
+    encoding = start
+    start = undefined
+  }
+
+  if (typeof end !== &#x27;number&#x27; &#x26;&#x26; encoding == null) {
+    encoding = end
+    end = undefined
+  }
+
+  decode.position = 0
+  decode.encoding = encoding || null
+
+  decode.data = !(Buffer.isBuffer(data))
+    ? new Buffer(data)
+    : data.slice(start, end)
+
+  decode.bytes = decode.data.length
+
+  return decode.next()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+d4:dictd3:key36:This is a string within a dictionarye7:integeri12345e4:listli1ei2ei3ei4e6:stringi5edee6:string11:Hello Worlde
+```
+
+### Decoding
+
+```javascript
+var data   = new Buffer( &#x27;d6:string11:Hello World7:integeri12345e4:dictd3:key36:This is a string within a dictionarye4:listli1ei2ei3ei4e6
+:stringi5edeee&#x27; )
+var result = bencode.<span class="apidocCodeKeywordSpan">decode</span>( data )
+```
+
+#### Output
+
+```javascript
+{
+string: &#x3c;Buffer 48 65 6c 6c 6f 20 57 6f 72 6c 64&#x3e;,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.encode" id="apidoc.element.bencode.encode">
+        function <span class="apidocSignatureSpan">bencode.</span>encode
+        <span class="apidocSignatureSpan">(data, buffer, offset)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function encode(data, buffer, offset) {
+  var buffers = []
+  var result = null
+
+  encode._encode(buffers, data)
+  result = Buffer.concat(buffers)
+  encode.bytes = result.length
+
+  if (Buffer.isBuffer(buffer)) {
+    result.copy(buffer, offset)
+    return buffer
+  }
+
+  return result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  integer: 12345,
+  dict: {
+    key: &#x27;This is a string within a dictionary&#x27;
+  },
+  list: [ 1, 2, 3, 4, &#x27;string&#x27;, 5, {} ]
+}
+
+var result = bencode.<span class="apidocCodeKeywordSpan">encode</span>( data )
+
+```
+
+**NOTE** As of `bencode@0.8.0`, boolean values will be cast to integers (false -&#x3e; 0, true -&#x3e; 1).
+
+#### Output
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.encodingLength" id="apidoc.element.bencode.encodingLength">
+        function <span class="apidocSignatureSpan">bencode.</span>encodingLength
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">encodingLength = function (value) {
+  return bencode.encode(value).length
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+&#x3e; `String` __encoding__
+
+If `encoding` is set, bytestrings are
+automatically converted to strings.
+
+Returns `Object` | `Array` | `Buffer` | `String` | `Number`
+
+### bencode.byteLength( *value* ) or bencode.<span class="apidocCodeKeywordSpan">encodingLength</span>( *value* )
+
+&#x3e; `Buffer` | `Array` | `String` | `Object` | `Number` | `Boolean` __value__
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.bencode.decode" id="apidoc.module.bencode.decode">module bencode.decode</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.decode.decode" id="apidoc.element.bencode.decode.decode">
+        function <span class="apidocSignatureSpan">bencode.</span>decode
+        <span class="apidocSignatureSpan">(data, start, end, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decode(data, start, end, encoding) {
+  if (data == null || data.length === 0) {
+    return null
+  }
+
+  if (typeof start !== &#x27;number&#x27; &#x26;&#x26; encoding == null) {
+    encoding = start
+    start = undefined
+  }
+
+  if (typeof end !== &#x27;number&#x27; &#x26;&#x26; encoding == null) {
+    encoding = end
+    end = undefined
+  }
+
+  decode.position = 0
+  decode.encoding = encoding || null
+
+  decode.data = !(Buffer.isBuffer(data))
+    ? new Buffer(data)
+    : data.slice(start, end)
+
+  decode.bytes = decode.data.length
+
+  return decode.next()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+d4:dictd3:key36:This is a string within a dictionarye7:integeri12345e4:listli1ei2ei3ei4e6:stringi5edee6:string11:Hello Worlde
+```
+
+### Decoding
+
+```javascript
+var data   = new Buffer( &#x27;d6:string11:Hello World7:integeri12345e4:dictd3:key36:This is a string within a dictionarye4:listli1ei2ei3ei4e6
+:stringi5edeee&#x27; )
+var result = bencode.<span class="apidocCodeKeywordSpan">decode</span>( data )
+```
+
+#### Output
+
+```javascript
+{
+string: &#x3c;Buffer 48 65 6c 6c 6f 20 57 6f 72 6c 64&#x3e;,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.decode.buffer" id="apidoc.element.bencode.decode.buffer">
+        function <span class="apidocSignatureSpan">bencode.decode.</span>buffer
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">buffer = function () {
+  var sep = decode.find(0x3A)
+  var length = getIntFromBuffer(decode.data, decode.position, sep)
+  var end = ++sep + length
+
+  decode.position = end
+
+  return decode.encoding
+    ? decode.data.toString(decode.encoding, sep, end)
+    : decode.data.slice(sep, end)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.decode.dictionary" id="apidoc.element.bencode.decode.dictionary">
+        function <span class="apidocSignatureSpan">bencode.decode.</span>dictionary
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dictionary = function () {
+  decode.position++
+
+  var dict = {}
+
+  while (decode.data[decode.position] !== 0x65) {
+    dict[decode.buffer()] = decode.next()
+  }
+
+  decode.position++
+
+  return dict
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.decode.find" id="apidoc.element.bencode.decode.find">
+        function <span class="apidocSignatureSpan">bencode.decode.</span>find
+        <span class="apidocSignatureSpan">(chr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">find = function (chr) {
+  var i = decode.position
+  var c = decode.data.length
+  var d = decode.data
+
+  while (i &#x3c; c) {
+    if (d[i] === chr) return i
+    i++
+  }
+
+  throw new Error(
+    &#x27;Invalid data: Missing delimiter &#x22;&#x27; +
+    String.fromCharCode(chr) + &#x27;&#x22; [0x&#x27; +
+    chr.toString(16) + &#x27;]&#x27;
+  )
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.decode.integer" id="apidoc.element.bencode.decode.integer">
+        function <span class="apidocSignatureSpan">bencode.decode.</span>integer
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">integer = function () {
+  var end = decode.find(0x65)
+  var number = getIntFromBuffer(decode.data, decode.position + 1, end)
+
+  decode.position += end + 1 - decode.position
+
+  return number
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.decode.list" id="apidoc.element.bencode.decode.list">
+        function <span class="apidocSignatureSpan">bencode.decode.</span>list
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">list = function () {
+  decode.position++
+
+  var lst = []
+
+  while (decode.data[decode.position] !== 0x65) {
+    lst.push(decode.next())
+  }
+
+  decode.position++
+
+  return lst
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.decode.next" id="apidoc.element.bencode.decode.next">
+        function <span class="apidocSignatureSpan">bencode.decode.</span>next
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">next = function () {
+  switch (decode.data[decode.position]) {
+    case 0x64:
+      return decode.dictionary()
+    case 0x6C:
+      return decode.list()
+    case 0x69:
+      return decode.integer()
+    default:
+      return decode.buffer()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.bencode.encode" id="apidoc.module.bencode.encode">module bencode.encode</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.encode.encode" id="apidoc.element.bencode.encode.encode">
+        function <span class="apidocSignatureSpan">bencode.</span>encode
+        <span class="apidocSignatureSpan">(data, buffer, offset)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function encode(data, buffer, offset) {
+  var buffers = []
+  var result = null
+
+  encode._encode(buffers, data)
+  result = Buffer.concat(buffers)
+  encode.bytes = result.length
+
+  if (Buffer.isBuffer(buffer)) {
+    result.copy(buffer, offset)
+    return buffer
+  }
+
+  return result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  integer: 12345,
+  dict: {
+    key: &#x27;This is a string within a dictionary&#x27;
+  },
+  list: [ 1, 2, 3, 4, &#x27;string&#x27;, 5, {} ]
+}
+
+var result = bencode.<span class="apidocCodeKeywordSpan">encode</span>( data )
+
+```
+
+**NOTE** As of `bencode@0.8.0`, boolean values will be cast to integers (false -&#x3e; 0, true -&#x3e; 1).
+
+#### Output
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.encode._encode" id="apidoc.element.bencode.encode._encode">
+        function <span class="apidocSignatureSpan">bencode.encode.</span>_encode
+        <span class="apidocSignatureSpan">(buffers, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_encode = function (buffers, data) {
+  if (Buffer.isBuffer(data)) {
+    buffers.push(new Buffer(data.length + &#x27;:&#x27;))
+    buffers.push(data)
+    return
+  }
+
+  if (data == null) { return }
+
+  switch (typeof data) {
+    case &#x27;string&#x27;:
+      encode.buffer(buffers, data)
+      break
+    case &#x27;number&#x27;:
+      encode.number(buffers, data)
+      break
+    case &#x27;object&#x27;:
+      data.constructor === Array
+        ? encode.list(buffers, data)
+        : encode.dict(buffers, data)
+      break
+    case &#x27;boolean&#x27;:
+      encode.number(buffers, data ? 1 : 0)
+      break
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.encode.buffer" id="apidoc.element.bencode.encode.buffer">
+        function <span class="apidocSignatureSpan">bencode.encode.</span>buffer
+        <span class="apidocSignatureSpan">(buffers, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">buffer = function (buffers, data) {
+  buffers.push(new Buffer(Buffer.byteLength(data) + &#x27;:&#x27; + data))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.encode.dict" id="apidoc.element.bencode.encode.dict">
+        function <span class="apidocSignatureSpan">bencode.encode.</span>dict
+        <span class="apidocSignatureSpan">(buffers, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dict = function (buffers, data) {
+  buffers.push(buffD)
+
+  var j = 0
+  var k
+  // fix for issue #13 - sorted dicts
+  var keys = Object.keys(data).sort()
+  var kl = keys.length
+
+  for (; j &#x3c; kl; j++) {
+    k = keys[j]
+    if (data[k] == null) continue
+    encode.buffer(buffers, k)
+    encode._encode(buffers, data[k])
+  }
+
+  buffers.push(buffE)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.encode.list" id="apidoc.element.bencode.encode.list">
+        function <span class="apidocSignatureSpan">bencode.encode.</span>list
+        <span class="apidocSignatureSpan">(buffers, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">list = function (buffers, data) {
+  var i = 0
+  var c = data.length
+  buffers.push(buffL)
+
+  for (; i &#x3c; c; i++) {
+    if (data[i] == null) continue
+    encode._encode(buffers, data[i])
+  }
+
+  buffers.push(buffE)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bencode.encode.number" id="apidoc.element.bencode.encode.number">
+        function <span class="apidocSignatureSpan">bencode.encode.</span>number
+        <span class="apidocSignatureSpan">(buffers, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">number = function (buffers, data) {
+  var maxLo = 0x80000000
+  var hi = (data / maxLo) &#x3c;&#x3c; 0
+  var lo = (data % maxLo) &#x3c;&#x3c; 0
+  var val = hi * maxLo + lo
+
+  buffers.push(new Buffer(&#x27;i&#x27; + val + &#x27;e&#x27;))
+
+  if (val !== data &#x26;&#x26; !encode._floatConversionDetected) {
+    encode._floatConversionDetected = true
+    console.warn(
+      &#x27;WARNING: Possible data corruption detected with value &#x22;&#x27; + data + &#x27;&#x22;:&#x27;,
+      &#x27;Bencoding only defines support for integers, value was converted to &#x22;&#x27; + val + &#x27;&#x22;&#x27;
+    )
+    console.trace()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
